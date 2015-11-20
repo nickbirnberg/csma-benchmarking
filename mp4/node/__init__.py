@@ -12,6 +12,8 @@ class Node:
         self.current_attempt = 0  # attempts are 0-indexed
         self.current_r = self.random_ranges[0]
         self.back_off = random.randint(0, self.current_r)
+        self.num_collisions = 0
+        self.num_transmits = 0
 
     def tick(self):
         if self.back_off == 0:
@@ -24,6 +26,7 @@ class Node:
         return self.channel_occupied
 
     def collision(self):
+        self.num_collisions += 1
         self.current_attempt += 1
         if self.current_attempt < self.max_attempts:
             if self.current_attempt >= len(self.random_ranges):
@@ -36,6 +39,7 @@ class Node:
 
     def send_packet(self):
         Node.channel_occupied = True
+        self.num_transmits += 1
         self.reset_packet()
 
     def reset_packet(self):
