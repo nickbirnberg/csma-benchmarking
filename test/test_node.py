@@ -39,6 +39,7 @@ class TestNode(unittest.TestCase):
         node_c.tick()
         self.assertEqual(node_b.current_attempt, 1)
         self.assertEqual(node_c.back_off, 1)
+        self.assertEqual(node_a.num_transmits, 1)
         node_b.back_off = 0
 
         node_b.tick()
@@ -62,6 +63,7 @@ class TestNode(unittest.TestCase):
         self.assertEqual(node_a.current_attempt, 2)
         node_a.collision()
         self.assertEqual(node_a.current_attempt, 0)
+        self.assertEqual(node_a.num_collisions, 3)
 
     def test_send_packet(self):
         Node.random_ranges = [8, 16, 32]
@@ -73,6 +75,7 @@ class TestNode(unittest.TestCase):
         node_a.send_packet()
         self.assertEqual(node_a.current_attempt, 0)
         self.assertEqual(node_b.channel_occupied, True)
+        self.assertEqual(node_a.num_transmits, 1)
 
 
 if __name__ == '__main__':

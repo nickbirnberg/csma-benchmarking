@@ -21,9 +21,10 @@ class Node:
                 self.collision()
             else:
                 self.send_packet()
+                return True
         elif not self.channel_occupied:
             self.back_off -= 1
-        return self.channel_occupied
+        return False
 
     def collision(self):
         self.num_collisions += 1
