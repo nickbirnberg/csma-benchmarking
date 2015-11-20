@@ -10,7 +10,8 @@ class Node:
         if len(self.random_ranges) == 0 or self.max_attempts == 0:
             raise RuntimeError
         self.current_attempt = 0  # attempts are 0-indexed
-        self.back_off = random.randint(0, self.random_ranges[0])
+        self.current_r = self.random_ranges[0]
+        self.back_off = random.randint(0, self.current_r)
 
     def tick(self):
         if self.back_off == 0:
@@ -25,8 +26,11 @@ class Node:
     def collision(self):
         self.current_attempt += 1
         if self.current_attempt < self.max_attempts:
-            # TODO: Wait for Piazza answer for what to do when current_attempt > len(random_ranges)
-            self.back_off = random.randint(0, self.random_ranges[self.current_attempt])
+            if self.current_attempt >= len(self.random_ranges):
+                self.current_r *= 2
+            else:
+                self.current_r = self.random_ranges[self.current_attempt]
+            self.back_off = random.randint(0, self.current_r)
         else:
             self.reset_packet()
 
@@ -36,4 +40,5 @@ class Node:
 
     def reset_packet(self):
         self.current_attempt = 0
-        self.back_off = random.randint(0, self.random_ranges[0])
+        self.current_r = self.random_ranges[0]
+        self.back_off = random.randint(0, self.current_r)
