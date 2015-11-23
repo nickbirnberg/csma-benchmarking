@@ -1,6 +1,6 @@
 import unittest
 
-from mp4.node import Node
+from mp4 import Node
 
 
 class TestNode(unittest.TestCase):

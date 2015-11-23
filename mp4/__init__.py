@@ -1,6 +1,6 @@
 import statistics
 
-from mp4.node import Node
+from .node import Node
 
 
 def main(num_nodes, packet_size, random_ranges, attempts, sim_time):
@@ -13,7 +13,7 @@ def main(num_nodes, packet_size, random_ranges, attempts, sim_time):
     all_nodes = []
     for _ in range(num_nodes):
         all_nodes.append(Node())
-    # s(t)imulation!
+    # simulate
     all_nodes.sort(key=lambda a_node: a_node.back_off)
     clock = 0
     while clock < sim_time:

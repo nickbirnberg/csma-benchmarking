@@ -1,6 +1,6 @@
 import unittest
 
-import mp4.parser as parser
+from mp4 import parser
 
 
 class TestParser(unittest.TestCase):
