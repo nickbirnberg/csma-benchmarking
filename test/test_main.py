@@ -5,8 +5,10 @@ import mp4
 
 class TestMain(unittest.TestCase):
     def test_main(self):
-        percent_idle, num_collisions, variance_success, variance_collisions = mp4.main(25, 20, [8, 16, 32, 64, 128], 6,
-                                                                                       50000)
+        util, percent_idle, num_collisions, variance_success, variance_collisions = mp4.main(25, 20,
+                                                                                             [8, 16, 32, 64, 128], 6,
+                                                                                             50000)
+        print(util)
         print(percent_idle)
         print(num_collisions)
         print(variance_success)
