@@ -1,8 +1,8 @@
-# ece438-mp4
+# csma-benchmarking
 
 ## How To Run
 ```
-python3 csma.py input.txt
+python3 main.py input.txt
 ```
 
 For an output.txt such as:

@@ -1,6 +1,6 @@
 import unittest
 
-from mp4 import parser
+from csma import parser
 
 
 class TestParser(unittest.TestCase):

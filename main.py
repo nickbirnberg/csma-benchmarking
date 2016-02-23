@@ -1,18 +1,18 @@
 import argparse
 
-import mp4
-import mp4.parser
+import csma
+import csma.parser
 
 arg_parser = argparse.ArgumentParser(description='Simulate a simplified CSMA.')
 arg_parser.add_argument('input', default='input.txt')
 args = arg_parser.parse_args()
 
-parsed = mp4.parser.parse(args.input)
-util, percent_idle, num_collisions, variance_success, variance_collisions = mp4.main(parsed['num_nodes'],
-                                                                                     parsed['packet_size'],
-                                                                                     parsed['random_ranges'],
-                                                                                     parsed['attempts'],
-                                                                                     parsed['sim_time'])
+parsed = csma.parser.parse(args.input)
+util, percent_idle, num_collisions, variance_success, variance_collisions = csma.main(parsed['num_nodes'],
+                                                                                      parsed['packet_size'],
+                                                                                      parsed['random_ranges'],
+                                                                                      parsed['attempts'],
+                                                                                      parsed['sim_time'])
 
 with open('output.txt', 'w') as out_file:
     out_file.write('Channel utilization (in percentage) ' + str(util) + '\n')

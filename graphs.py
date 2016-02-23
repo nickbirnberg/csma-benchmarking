@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-import mp4
+import csma
 
 # part A + B + C
 
@@ -8,7 +8,7 @@ channel_utilization = []
 idle_fraction = []
 total_collisions = []
 for n in range(5, 101):
-    util, percent_idle, num_collisions, _, _ = mp4.main(n, 20, [8, 16, 32, 64, 128], 6, 50000)
+    util, percent_idle, num_collisions, _, _ = csma.main(n, 20, [8, 16, 32, 64, 128], 6, 50000)
     channel_utilization.append(util)
     idle_fraction.append(percent_idle)
     total_collisions.append(num_collisions)
@@ -37,7 +37,7 @@ plt.figure(4)
 for r in [1, 2, 4, 8, 16]:
     channel_utilization = []
     for n in range(5, 101):
-        util, percent_idle, _, _, _ = mp4.main(n, 20, [r], 6, 50000)
+        util, percent_idle, _, _, _ = csma.main(n, 20, [r], 6, 50000)
         channel_utilization.append(util)
     plt.plot(range(5, 101), channel_utilization, hold=True, label='R =' + str(r))
 plt.xlabel('Number of Nodes (N)')
@@ -50,7 +50,7 @@ plt.figure(5)
 for l in [20, 40, 60, 80, 100]:
     channel_utilization = []
     for n in range(5, 101):
-        util, percent_idle, _, _, _ = mp4.main(n, l, [8, 16, 32, 64, 128], 6, 50000)
+        util, percent_idle, _, _, _ = csma.main(n, l, [8, 16, 32, 64, 128], 6, 50000)
         channel_utilization.append(util)
     plt.plot(range(5, 101), channel_utilization, hold=True, label='L =' + str(l))
 plt.xlabel('Number of Nodes (N)')

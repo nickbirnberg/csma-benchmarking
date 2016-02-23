@@ -1,6 +1,6 @@
 import unittest
 
-from mp4 import Node
+from csma import Node
 
 
 class TestNode(unittest.TestCase):
